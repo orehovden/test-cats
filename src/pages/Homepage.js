@@ -1,9 +1,7 @@
 import React from 'react';
-import {Col, Container, Navbar, Row, Spinner} from 'react-bootstrap';
-import {Query} from '@redux-requests/react';
+import {Container, Navbar} from 'react-bootstrap';
 
-import {FETCH_BREEDS} from 'store/constants';
-import BreedSelector from 'components/BreedSelector';
+import {BreedSelector, CatsList} from 'components';
 
 const Homepage = () => {
   return (
@@ -12,16 +10,8 @@ const Homepage = () => {
         <Navbar.Brand href="/">Cat Browser</Navbar.Brand>
       </Navbar>
       <Container className="pt-2">
-        <Row>
-          <Col>
-            <Query
-              type={FETCH_BREEDS}
-              component={BreedSelector}
-              loadingComponent={Spinner}
-              loadingComponentProps={{animation: 'border'}}
-            />
-          </Col>
-        </Row>
+        <BreedSelector />
+        <CatsList />
       </Container>
     </>
   );

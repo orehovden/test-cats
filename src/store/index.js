@@ -2,6 +2,7 @@ import axios from 'axios';
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import {handleRequests} from '@redux-requests/core';
 import {createDriver} from '@redux-requests/axios';
+import {breed} from './reducers';
 
 export const configureStore = () => {
   const {requestsReducer, requestsMiddleware} = handleRequests({
@@ -10,7 +11,7 @@ export const configureStore = () => {
         baseURL: process.env.REACT_APP_restURL,
         headers: {
           common: {
-            api_key: process.env.REACT_APP_apiKey,
+            'x-api-key': process.env.REACT_APP_apiKey,
           },
         },
       })
@@ -19,6 +20,7 @@ export const configureStore = () => {
 
   const reducers = combineReducers({
     requests: requestsReducer,
+    breed,
   });
 
   const composeEnhancers =
