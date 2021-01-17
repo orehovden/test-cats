@@ -1,11 +1,10 @@
 import React from 'react';
 import {Col, Form, Row} from 'react-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
-import {resetRequests} from '@redux-requests/core';
 import {Query} from '@redux-requests/react';
 
-import {fetchBreedImages, selectBreed} from 'store/actions';
-import {FETCH_BREEDS, SELECT_BREED_IMAGES} from 'store/constants';
+import {selectBreed} from 'store/actions';
+import {FETCH_BREEDS} from 'store/constants';
 import {LoadingSpinner} from 'components';
 
 const BreedSelector = () => {
@@ -13,9 +12,7 @@ const BreedSelector = () => {
   const breedId = useSelector((state) => state.breed.breedId);
 
   const onSelect = (breedId) => {
-    dispatch(resetRequests([SELECT_BREED_IMAGES]));
     dispatch(selectBreed(breedId));
-    dispatch(fetchBreedImages(breedId));
   };
 
   return (
