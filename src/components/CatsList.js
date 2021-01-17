@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Card, Col, Row} from 'react-bootstrap';
 import {Query} from '@redux-requests/react';
 import {useDispatch, useSelector} from 'react-redux';
+import {NavLink} from 'react-router-dom';
 
 import {LoadingSpinner} from 'components';
 import {SELECT_BREED_IMAGES} from 'store/constants';
@@ -17,7 +18,11 @@ const CatsList = () => {
 
   return (
     <Row>
-      <Query type={SELECT_BREED_IMAGES} loadingComponent={LoadingSpinner}>
+      <Query
+        type={SELECT_BREED_IMAGES}
+        noDataMessage="No cats available"
+        loadingComponent={LoadingSpinner}
+      >
         {({data: {breedImages = [], hasMore = false}}) => (
           <>
             {breedImages.map((breedImage) => (
@@ -25,9 +30,12 @@ const CatsList = () => {
                 <Card>
                   <Card.Img variant="top" src={breedImage.url} />
                   <Card.Body>
-                    <Button className="w-100" variant="primary">
+                    <NavLink
+                      to={`/breed/${breedImage.id}`}
+                      className="w-100 btn btn-primary"
+                    >
                       View Details
-                    </Button>
+                    </NavLink>
                   </Card.Body>
                 </Card>
               </Col>

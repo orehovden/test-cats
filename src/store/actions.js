@@ -1,4 +1,5 @@
 import {
+  FETCH_BREED,
   FETCH_BREEDS,
   INCREMENT_PAGE,
   SELECT_BREED,
@@ -9,6 +10,11 @@ import {getQuery} from '@redux-requests/core';
 export const fetchBreeds = () => ({
   type: FETCH_BREEDS,
   request: {url: `/breeds`},
+});
+
+export const fetchBreed = (imageId) => ({
+  type: FETCH_BREED,
+  request: {url: `/images/${imageId}`},
 });
 
 export const fetchBreedImages = (

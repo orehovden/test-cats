@@ -1,4 +1,5 @@
 export const FETCH_BREEDS = 'FETCH_BREEDS';
+export const FETCH_BREED = 'FETCH_BREED';
 export const SELECT_BREED = 'SELECT_BREED';
 export const SELECT_BREED_IMAGES = 'SELECT_BREED_IMAGES';
 export const INCREMENT_PAGE = 'INCREMENT_PAGE';
